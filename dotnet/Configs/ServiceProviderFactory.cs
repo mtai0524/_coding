@@ -5,7 +5,7 @@ namespace dotnet.Configs;
 
 public static class ServiceProviderFactory
 {
-    public static ServiceProvider Create()
+    internal static ServiceProvider Create()
     {
         var services = new ServiceCollection();
         services.AddBusiness();

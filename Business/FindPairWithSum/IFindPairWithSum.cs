@@ -3,20 +3,23 @@ namespace Business.FindPairWithSum;
 public interface IFindPairWithSum
 {
     public string FindPairWithSum_On();
-    public List<(int index, int value)>  FindPairWithSum_On2(int[] arr, int target);
+
+    public List<(int Index, int Value)>  FindPairWithSum_On2(int[] arr, int target);
 }
 
 public class FindPairWithSum : IFindPairWithSum
 {
+    /// <inheritdoc/>
     public string FindPairWithSum_On()
     {
         var res = "Hello world123";
         return res;
     }
 
-    public List<(int index, int value)> FindPairWithSum_On2(int[] arr, int target)
+    /// <inheritdoc/>
+    public List<(int Index, int Value)> FindPairWithSum_On2(int[] arr, int target)
     {
-        var map = new Dictionary<int, int>();
+        var result = new List<(int, int)>();
 
         for (int i = 0; i < arr.Length; i++)
         {
@@ -24,14 +27,11 @@ public class FindPairWithSum : IFindPairWithSum
             {
                 if (arr[i] + arr[j] == target)
                 {
-                    if (!map.ContainsKey(i)) map[i] = arr[i];
-                    if (!map.ContainsKey(j)) map[j] = arr[j];
+                    result.Add((arr[i], arr[j]));
                 }
             }
         }
 
-        return map
-            .Select(kvp => (kvp.Key, kvp.Value))
-            .ToList();
+        return result;
     }
 }

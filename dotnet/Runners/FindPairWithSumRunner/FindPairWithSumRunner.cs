@@ -2,15 +2,10 @@ using Business.FindPairWithSum;
 
 namespace dotnet.Runners.FindPairWithSumRunner;
 
-public class FindPairWithSumRunner
+public class FindPairWithSumRunner(IFindPairWithSum finder)
 {
-    private readonly IFindPairWithSum _finder;
-    private int[] arr = new[] { 2, 5, 10, 1, 2, 19, 4, 13 };
-    private int target { get; set; }
-    public FindPairWithSumRunner(IFindPairWithSum finder)
-    {
-        _finder = finder;
-    }
+    private readonly int[] arr = new[] { 2, 5, 10, 1, 2, 19, 4, 13 };
+    private int Target { get; set; }
 
     public void RunFindPairWithSum_On2()
     {
@@ -22,8 +17,8 @@ public class FindPairWithSumRunner
             return;
         }
 
-        var result = _finder.FindPairWithSum_On2(arr, target);
-        
+        var result = finder.FindPairWithSum_On2(this.arr, target);
+
         foreach (var (index, value) in result)
         {
             Console.WriteLine($"Index: {index}, Value: {value}");
@@ -32,7 +27,7 @@ public class FindPairWithSumRunner
 
     public void RunFindPairWithSum_On()
     {
-        var result = _finder.FindPairWithSum_On();
+        var result = finder.FindPairWithSum_On();
         Console.WriteLine(result);
     }
 }
